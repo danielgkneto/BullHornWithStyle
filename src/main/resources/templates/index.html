@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: header" />
+<body>
+<div th:replace="base :: title"></div>
+<div th:replace="base :: navlinks"></div>
+<div class="container bg-light">
+    <h2>Messages</h2>
+    <table class="table">
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Sent By</th>
+            <td scope="col" class="font-weight-bold">Actions</td>
+        </tr>
+        <tr th:scope="row" th:each="message : ${messages}">
+            <td th:text="${message.postedDate}"></td>
+            <td th:text="${message.sentBy}"></td>
+            <td>
+                <button type="button" class="btn btn-primary"><a class="text-light" th:href="@{/detail/{id}(id=${message.id})}">See Message</a></button>
+            </td></tr>
+    </table>
+    <a href="/add">Add a Message</a><br />
+</div>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

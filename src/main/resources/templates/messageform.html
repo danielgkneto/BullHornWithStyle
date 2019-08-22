@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: header" />
+<body>
+<div th:replace="base :: title"></div>
+<div th:replace="base :: navlinks"></div>
+<div class="container bg-light">
+    <h2>New message</h2>
+    <form action="#" th:action="@{/process}" th:object="${message}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <input type="hidden" th:field="*{postedDate}" />
+        <div class="form-group">
+            <label for="sentby">Sent By: </label>
+            <input id="sentby" type="text" class="form-control" th:field="*{sentBy}" />
+            <span th:if="${#fields.hasErrors('sentBy')}"
+                  th:errors="*{sentBy}"></span>
+        </div>
+        <div class="form-group">
+            <label for="content">Content: </label>
+            Content: <textarea rows="3" id="content" class="form-control" th:field="*{content}" />
+            <span th:if="${#fields.hasErrors('content')}"
+                  th:errors="*{content}"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: header" />
+<body>
+<div th:replace="base :: title"></div>
+<div th:replace="base :: navlinks"></div>
+<div class="container bg-light">
+    <h2>Message</h2>
+    <div class="alert alert-light" role="alert">
+        <p class="mb-0">Message posted in <span th:text="${message.postedDate}"></span> by <span th:text="${message.sentBy}"></span></p>
+        <h4 class="alert-heading"><span th:text="${message.content}" ></span></h4>
+        <hr>
+        <a href="/">Back</a><br />
+    </div>
+</div>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>
